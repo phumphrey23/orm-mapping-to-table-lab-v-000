@@ -10,6 +10,7 @@ class Student
   #  with DB[:conn]
 
   def self.create_table
+    #heredoc
     sql =  <<-SQL
       CREATE TABLE IF NOT EXISTS students (
         id INTEGER PRIMARY KEY,
@@ -18,6 +19,10 @@ class Student
         )
         SQL
     DB[:conn].execute(sql)
+  end
+
+  def self.drop_table
+    
   end
 
   def save
@@ -29,6 +34,10 @@ class Student
    DB[:conn].execute(sql, self.name, self.grade)
    @id = DB[:conn].execute("SELECT last_insert_rowid() FROM students")[0][0]
 
- end
+  end
+
+  def self.create
+   
+  end
 
 end
